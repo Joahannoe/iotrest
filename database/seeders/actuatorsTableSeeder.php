@@ -19,8 +19,9 @@ class actuatorsTableSeeder extends Seeder
         for($i = 0; $i < 20; $i++){
             Actuator::create([
                 'name' => $faker->unique()->name(),
-                'type' => $faker->randomElement(['Temp','Humedad','Presion']),
-                'value' => $faker->randomFloat([0,0,100]),
+                'type' => $faker->randomElement(['Led','Motor','Engrane']),
+                'value' => $faker->randomFloat(0,0,100),
+                'date' => $faker->dateTimeThisYear(),
                 'user_id'  => rand(1,11)
             ]);
         }
