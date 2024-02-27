@@ -28,7 +28,7 @@ class SensorsController extends Controller
         $sensor = new Sensor();
         $sensor->fill($request->all());
         $sensor->user_id=1;
-        $sensor->date('Y-m-d H:i:s');
+        $sensor->date = date ('Y-m-d H:i:s');
         $sensor->save();
         return $sensor;
     }

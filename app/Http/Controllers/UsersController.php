@@ -38,7 +38,6 @@ class UsersController extends Controller
             'username' => 'filled|unique:users',
         ]);
        $user = User::find($id);
-       $user->update($request->all());
        if(!$user) return response('',404);
        $user->update($request->all());
        if($request->password) $user->password = Hash::make($request->password);

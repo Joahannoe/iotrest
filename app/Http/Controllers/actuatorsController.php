@@ -27,7 +27,7 @@ class actuatorsController extends Controller
         ]);
         $actuators = new Actuator();
         $actuators->fill($request->all());
-        $actuators->date('Y-m-d H:i:s');
+        $actuators->date=date('Y-m-d H:i:s');
         $actuators->save();
         return $actuators;
     }
