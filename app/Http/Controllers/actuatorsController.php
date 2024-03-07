@@ -23,10 +23,11 @@ class actuatorsController extends Controller
             'type' => 'required',
             'value' => 'required',
             //'date' => 'required',
-            //'user_id' => 'required',
+            'user_id' => 'required',
         ]);
         $actuators = new Actuator();
         $actuators->fill($request->all());
+        $actuators->user_id=1;
         $actuators->date=date('Y-m-d H:i:s');
         $actuators->save();
         return $actuators;

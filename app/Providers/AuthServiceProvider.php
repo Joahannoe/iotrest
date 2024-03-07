@@ -36,8 +36,8 @@ class AuthServiceProvider extends ServiceProvider
             if($request->header('Authorization')) {
                 $jwt = $request->header('Authorization');
                 $jwt = str_replace('Bearer ','',$jwt);
-                $decode = JWT::decode($jwt, new key(env('JWT_SECRET'),'HS256'));
-                return User::find($decode->sub);
+                $decoded = JWT::decode($jwt, new Key(env('JWT_SECRET'), 'HS256'));
+                return User::find($decoded->sub);
             }
         });
     } 

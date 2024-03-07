@@ -10,12 +10,13 @@ class AuthController extends Controller
 {
     public function login(Request $request){
         $user = User::where('username',$request->username)->first();
-        if(!$user) return request('',404);
+        if(!$user) return response('',404);
         if(!password_verify($request->password,$user->password)) return response('',401);
         $payload = [
             //'iss' => 'http://example.org',
-            'sub' => time(),
-            'nbf' => time() + 60*60+30
+            'sub' => $user->id,
+            'iat' => time(),
+            'exp' => time() + 60*60*60
         ];
         $jwt = JWT::encode($payload, env('JWT_SECRET'),'HS256');
         return $jwt;
